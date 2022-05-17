@@ -74,7 +74,7 @@ void playAlarm() {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
- // await AndroidAlarmManager.initialize();
+  await AndroidAlarmManager.initialize();
   // NavigationService().setupLocator();
   //pushNamed('/setting');
   // AndroidAlarmManager.initialize();
@@ -86,7 +86,7 @@ final NavigationService _navigationService = locator<NavigationService>();
  _navigationService.navigateTo('setting');
 */
 //Navigator.pushReplacementNamed(context, '/settings/brightness');
-  //setAlarm();
+  setAlarm();
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     title: "whatsapp",
