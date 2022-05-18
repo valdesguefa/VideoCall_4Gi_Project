@@ -34,8 +34,8 @@ class _MyAppState extends State<MyApp> {
   //Signaling _signaling;
   bool _inCalling = false;
 
-  final _localRenderer = RTCVideoRenderer();
-  final _remoteRenderer = RTCVideoRenderer();
+  RTCVideoRenderer _localRenderer = RTCVideoRenderer();
+  RTCVideoRenderer _remoteRenderer = RTCVideoRenderer();
   MediaStream _localStream;
   RTCPeerConnection pc;
 
@@ -44,7 +44,6 @@ class _MyAppState extends State<MyApp> {
     // TODO: implement initState
     super.initState();
     init();
-
   }
 
   Future init() async {
@@ -91,7 +90,8 @@ class _MyAppState extends State<MyApp> {
       // _localStream =  await navigator.mediaDevices.getUserMedia(mediaConstraints);
       //await navigator.mediaDevices.getUserMedia(mediaConstraints);
 
-      _localStream = await navigator.mediaDevices.getUserMedia(mediaConstraints); //await navigator.mediaDevices.getUserMedia( mediaConstraints); //await Helper.openCamera( mediaConstraints); //await navigator.getUserMedia(mediaConstraints);  //await navigator.getDisplayMedia(mediaConstraints);
+      _localStream = await navigator.mediaDevices.getUserMedia(
+          mediaConstraints); //await navigator.mediaDevices.getUserMedia( mediaConstraints); //await Helper.openCamera( mediaConstraints); //await navigator.getUserMedia(mediaConstraints);  //await navigator.getDisplayMedia(mediaConstraints);
       /* use the stream */
       /*
       navigator.mediaDevices.getUserMedia(mediaConstraints).then((stream){
@@ -135,7 +135,7 @@ class _MyAppState extends State<MyApp> {
           */
     print('poipjpoijpoijpoijpoijpoijpoijpoijpojpoijpmmpoipoijpmi');
     socket =
-        IO.io(URL, IO.OptionBuilder().setTransports(socket_config1).build());
+        IO.io(URL, IO.OptionBuilder().setTransports(socket_config).build());
     socket.onConnect((data) => {
           print('connection ok!'),
           this.setState(() {
@@ -191,12 +191,13 @@ class _MyAppState extends State<MyApp> {
       await Permission.microphone.request();
       // _localStream =  await navigator.mediaDevices.getUserMedia(mediaConstraints);
       //await navigator.mediaDevices.getUserMedia(mediaConstraints);
-      MediaStream stream = await Helper.openCamera( mediaConstraints); //await navigator.mediaDevices.getUserMedia( mediaConstraints); //await Helper.openCamera( mediaConstraints); //await navigator.getUserMedia(mediaConstraints);  //await navigator.getDisplayMedia(mediaConstraints);
+      MediaStream stream = await Helper.openCamera(
+          mediaConstraints); //await navigator.mediaDevices.getUserMedia( mediaConstraints); //await Helper.openCamera( mediaConstraints); //await navigator.getUserMedia(mediaConstraints);  //await navigator.getDisplayMedia(mediaConstraints);
       _localStream = stream;
       this.setState(() {
         _localStream = stream;
       });
-     /*
+      /*
       navigator.mediaDevices.getUserMedia(mediaConstraints).then((stream){
         this.setState(() {
           _localStream = stream;
@@ -241,6 +242,9 @@ class _MyAppState extends State<MyApp> {
 
     pc.onAddStream = (stream) {
       _remoteRenderer.srcObject = stream;
+      this.setState(() {
+        _remoteRenderer = _remoteRenderer;
+      });
     };
 
     Map data = ModalRoute.of(context).settings.arguments;

@@ -86,7 +86,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
             //print('bonjour');
             //navigator.pushReplacementNamed(context, '/videoCall');
             //navigator.pushNamed(context, '/videoCall');
-            AndroidAlarmManager.cancel(5);
+            //AndroidAlarmManager.cancel(5);
             print('Alarm Timer Canceled');
             Navigator.pushNamed(context, '/videoCall', arguments: {
               'name': widget.name,

@@ -69,7 +69,7 @@ void playAlarm() {
 //Navigator.pushNamed(context, '/videoCallReceiver');
 
   //socket.dispose();
-  //setAlarm();
+  setAlarm();
 }
 
 void main() async {
@@ -86,15 +86,15 @@ final NavigationService _navigationService = locator<NavigationService>();
  _navigationService.navigateTo('setting');
 */
 //Navigator.pushReplacementNamed(context, '/settings/brightness');
-  setAlarm();
+ // setAlarm();
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     title: "whatsapp",
     home: RootApp(),
-    initialRoute: !bol ? '/setting' : '/videoCallReceiver',
+    initialRoute: bol ? '/setting' : '/videoCallReceiver',
     routes: AppRoutes(),
   ));
-  //setAlarm();
+  setAlarm();
 //await AndroidAlarmManager.initialize();
   //setAlarm();
   print('bonjour snake eyes! ${bol}');
