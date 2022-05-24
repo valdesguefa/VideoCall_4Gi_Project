@@ -63,69 +63,6 @@ class _MyAppState extends State<MyApp> {
     */
   }
 
-  _makeCall() async {
-    final config = {
-      'iceServers': [
-        {"url": "stun:stun.l.google.com:19302"},
-      ]
-    };
-
-    final sdpConstraints = {
-      'mandatory': {
-        'OfferToReceiveAudio': true,
-        'OfferToReceiveVideo': true,
-      },
-      'optional': []
-    };
-
-    pc = await createPeerConnection(config, sdpConstraints);
-
-    final mediaConstraints = videoConstraintsPhone1;
-
-    // _localStream = await Helper.openCamera(mediaConstraints);
-
-    try {
-      await Permission.camera.request();
-      await Permission.microphone.request();
-      // _localStream =  await navigator.mediaDevices.getUserMedia(mediaConstraints);
-      //await navigator.mediaDevices.getUserMedia(mediaConstraints);
-
-      _localStream = await navigator.mediaDevices.getUserMedia(
-          mediaConstraints); //await navigator.mediaDevices.getUserMedia( mediaConstraints); //await Helper.openCamera( mediaConstraints); //await navigator.getUserMedia(mediaConstraints);  //await navigator.getDisplayMedia(mediaConstraints);
-      /* use the stream */
-      /*
-      navigator.mediaDevices.getUserMedia(mediaConstraints).then((stream){
-        _localStream=stream;
-      })
-      */
-    } catch (err) {
-      /* handle the error */
-      print('erreur genere');
-      print(err);
-      await Permission.camera.request();
-      await Permission.microphone.request();
-
-      if (await Permission.camera.isPermanentlyDenied) {
-        // The user opted to never again see the permission request dialog for this
-        // app. The only way to change the permission's status now is to let the
-        // user manually enable it in the system settings.
-        openAppSettings();
-      }
-    }
-    try {
-      print('kjslajdfnlkjasnlkjnlkjnalskdjn ${_localStream}');
-      _localStream.getTracks()?.forEach((track) {
-        pc.addTrack(track, _localStream);
-      });
-
-      _localRenderer?.srcObject = _localStream;
-    } catch (err) {
-      /* handle the error */
-      print('erreur genere 2');
-      print(err);
-    }
-  }
-
   Future connectSocket() async {
     /*
               if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != 
@@ -135,7 +72,7 @@ class _MyAppState extends State<MyApp> {
           */
     print('poipjpoijpoijpoijpoijpoijpoijpoijpojpoijpmmpoipoijpmi');
     socket =
-        IO.io(URL, IO.OptionBuilder().setTransports(socket_config).build());
+        IO.io(URL, IO.OptionBuilder().setTransports(socket_config1).build());
     socket.onConnect((data) => {
           print('connection ok!'),
           this.setState(() {
@@ -182,7 +119,7 @@ class _MyAppState extends State<MyApp> {
 
     pc = await createPeerConnection(config, sdpConstraints);
 
-    final mediaConstraints = videoConstraintsPhone2;
+    final mediaConstraints = videoConstraintsPhone1;
 
     // _localStream = await Helper.openCamera(mediaConstraints);
 
@@ -242,9 +179,7 @@ class _MyAppState extends State<MyApp> {
 
     pc.onAddStream = (stream) {
       _remoteRenderer.srcObject = stream;
-      this.setState(() {
-        _remoteRenderer = _remoteRenderer;
-      });
+
     };
 
     Map data = ModalRoute.of(context).settings.arguments;
@@ -253,17 +188,17 @@ class _MyAppState extends State<MyApp> {
     socket.emit('join', {
       [profile[0], data]
     });
-    /*
-    Map data = ModalRoute.of(context).settings.arguments;
-    print(data.img);
-    */
   }
 
   Future _sendOffer() async {
     print('send offer');
+    
     var offer = await pc.createOffer();
     pc.setLocalDescription(offer);
     socket.emit('offer', jsonEncode(offer.toMap()));
+    
+  
+
   }
 
   Future _gotOffer(RTCSessionDescription offer) async {
@@ -275,8 +210,9 @@ class _MyAppState extends State<MyApp> {
     print('send answer');
 
     var answer = await pc.createAnswer();
-    pc.setLocalDescription(answer);
+    pc?.setLocalDescription(answer);
     socket.emit('answer', jsonEncode(answer.toMap()));
+  
   }
 
   Future _gotAnswer(RTCSessionDescription answer) async {
@@ -379,7 +315,8 @@ leading: GestureDetector(
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-
+    print("voici l'affichage");
+    print(_remoteRenderer);
     return MaterialApp(
         home: Scaffold(
             appBar: getAppBar(),
@@ -418,7 +355,7 @@ leading: GestureDetector(
                         width: 300.0,
                         height: 200.0,
                         child: RTCVideoView(_remoteRenderer),
-                        decoration: BoxDecoration(color: Colors.black54),
+                       // decoration: BoxDecoration(color: Colors.black54),
                       )),
                   Positioned(
                     right: 20.0,

@@ -9,13 +9,15 @@ import 'dart:core';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:whatapp_clone_ui/json/chat_json.dart';
 import 'package:whatapp_clone_ui/json/server_config.dart';
+import 'package:get/get.dart';
+import 'package:whatapp_clone_ui/pages/uiChat/view/videoCallReceiver.dart';
 
 IO.Socket socket = null;
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 var bol = false;
 
 void setAlarm() async {
-  bol = false;
+  //bol = false;
   print("setAlarm");
   final int alarmID = 5;
   //navigatorKey.currentState?.pushNamed('/setting');
@@ -64,7 +66,8 @@ void playAlarm() {
         title: "Vous avez un Appel Video",
         body:
             '${emett['emett']['name']} essaye de vous joindre via un appel video');
-    bol = true;
+    Get.put(MyApp1());
+    ;
   });
 //Navigator.pushNamed(context, '/videoCallReceiver');
 
@@ -86,15 +89,15 @@ final NavigationService _navigationService = locator<NavigationService>();
  _navigationService.navigateTo('setting');
 */
 //Navigator.pushReplacementNamed(context, '/settings/brightness');
- // setAlarm();
-  runApp(MaterialApp(
+  setAlarm();
+  runApp(GetMaterialApp(
     debugShowCheckedModeBanner: false,
     title: "whatsapp",
     home: RootApp(),
     initialRoute: bol ? '/setting' : '/videoCallReceiver',
     routes: AppRoutes(),
   ));
-  setAlarm();
+  // setAlarm();
 //await AndroidAlarmManager.initialize();
   //setAlarm();
   print('bonjour snake eyes! ${bol}');

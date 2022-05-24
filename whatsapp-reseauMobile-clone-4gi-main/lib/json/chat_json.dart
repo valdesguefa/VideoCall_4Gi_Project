@@ -3,8 +3,8 @@ import 'package:line_icons/line_icons.dart';
 
 const List profile = [
   {
-    "name": "Sopheamen",
-    "number": "1",
+    "name": "sopheman",
+    "number": "6",
     "img":
         "https://lh3.googleusercontent.com/a-/AOh14GhqYCtgODjBQZ2EcAvJApnWnnDPgZe80-AMM6tctw=s600-k-no-rp-mo"
   }
@@ -15,7 +15,7 @@ const List chat_data = [
     "img":
         "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTB8fHByb2ZpbGV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
     "name": "Ben Parker",
-    "number" : "6",
+    "number": "1",
     "text": "Yes, got it. Thanks for your contacting.",
     "date": "10/8/20"
   },
@@ -23,7 +23,7 @@ const List chat_data = [
     "img":
         "https://images.unsplash.com/photo-1520155707862-5b32817388d6?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTF8fHByb2ZpbGV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
     "name": "Foto Sushi",
-    "number" : "7",
+    "number": "7",
     "text": "going to sleep now",
     "date": "6/10/20"
   },
@@ -31,7 +31,7 @@ const List chat_data = [
     "img":
         "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTd8fHByb2ZpbGV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
     "name": "Ayo Ogunseinde",
-    "number" : "8",
+    "number": "8",
     "text": "Have a nice day, Sopheamen 😁",
     "date": "10/6/20"
   },
@@ -39,7 +39,7 @@ const List chat_data = [
     "img":
         "https://images.unsplash.com/photo-1517070208541-6ddc4d3efbcb?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTZ8fHByb2ZpbGV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
     "name": "Steve Halama",
-    "number" : "2",
+    "number": "2",
     "text": "How is everthing?",
     "date": "11/5/20"
   },
@@ -47,7 +47,7 @@ const List chat_data = [
     "img":
         "https://images.unsplash.com/photo-1525879000488-bff3b1c387cf?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjV8fHByb2ZpbGV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
     "name": "Zohre Nemati",
-    "number" : "3",
+    "number": "3",
     "text": "ok",
     "date": "2/28/20"
   },
@@ -55,7 +55,7 @@ const List chat_data = [
     "img":
         "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MzV8fHByb2ZpbGV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
     "name": "Patrick Hendry",
-    "number" : "4",
+    "number": "4",
     "text": "take care! speak soon :)",
     "date": "6/1/20"
   }

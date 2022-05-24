@@ -1,4 +1,4 @@
-String URL = 'http://192.168.104.208:3000';
+String URL = 'http://192.168.221.208:3000';
 //String URL = 'http://localhost:3000';
 var socket_config = [
   'websocket',
@@ -20,7 +20,7 @@ var videoConstraintsPhone = {
 
 var videoConstraintsPhone1 = {'audio': true, 'video': true};
 var videoConstraintsPhone2 = {
-  'audio': false,
+  'audio': true,
   'video': {
     'mandatory': {
       'minWidth': '1280',

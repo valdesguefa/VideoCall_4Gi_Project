@@ -4,11 +4,13 @@
     // Pour plus d'informations, visitez : https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "name": "whatsapp-reseauMobile-clone-4gi-main",
             "cwd": "whatsapp-reseauMobile-clone-4gi-main",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "program": "lib/main.dart"
         },
         {
             "name": "whatsapp-reseauMobile-clone-4gi-main (profile mode)",

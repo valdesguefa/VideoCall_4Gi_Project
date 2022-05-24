@@ -9,7 +9,7 @@ async function server(){
     io.on('connection', (socket) => {
        socket.on('join', (profile) =>{
            //var tab = []
-           console.log(profile.length)
+          // console.log(profile.length)
            
          if(profile.length === 2){
             roomName = profile[1].number;
